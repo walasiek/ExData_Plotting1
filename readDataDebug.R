@@ -1,0 +1,19 @@
+
+# Reading data
+
+data <- read.csv(
+    'hpc.txt',
+    nrows=2880,
+    skip=66637,
+    header=FALSE,
+    sep=';',
+    dec='.',
+    na.strings='?'
+)
+
+names(data) <- c('Date', 'Time', 'Global_active_power', 'Global_reactive_power', 'Voltage', 'Global_intensity', 'Sub_metering_1', 'Sub_metering_2', 'Sub_metering_3')
+
+DatePOSIXCol1 <- paste(data$Date, data$Time, sep=" ")
+DatePOSIXCol2 <- lapply(DatePOSIXCol1, function(x) {as.POSIXct(strptime(x, "%d/%m/%Y %H:%M:%S"))})
+data[['DatePOSIXCol']] <- DatePOSIXCol2
+
