@@ -3,7 +3,7 @@
 # Author: Marcin Walas
 # ---------------------------
 
-source('readData.R')
+source('readDataDebug.R')
 par(mfrow = c(2,2))
 
 # -------- plot left-top
@@ -77,5 +77,5 @@ plot(
     type='l')
 
 
-dev.copy(png, file='plot3.png')
+dev.copy(png, file='plot4.png')
 dev.off()
